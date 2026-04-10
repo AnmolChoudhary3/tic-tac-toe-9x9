@@ -11,7 +11,8 @@ export function Board({ gameState, isBoardPlayable, onCellClick }: BoardProps) {
   const { boards, activeBoardIndex, localResults, globalResult } = gameState;
 
   return (
-    <div
+    <section
+      aria-label="Game Board"
       className="grid grid-cols-3 gap-1.5 sm:gap-2.5 md:gap-3 w-full mx-auto"
       style={{ maxWidth: 'min(95vw, 560px)' }}
     >
@@ -38,6 +39,6 @@ export function Board({ gameState, isBoardPlayable, onCellClick }: BoardProps) {
           />
         );
       })}
-    </div>
+    </section>
   );
 }

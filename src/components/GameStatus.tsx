@@ -10,7 +10,7 @@ interface GameStatusProps {
 export function GameStatus({ currentPlayer, globalResult, onRestart }: GameStatusProps) {
   return (
     <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5 mb-5">
-      <p className="text-lg sm:text-xl font-semibold tracking-tight">
+      <p className="text-lg sm:text-xl font-semibold tracking-tight" aria-live="polite">
         {globalResult === 'draw' ? (
           <span className="text-gray-400">Game is a Draw!</span>
         ) : globalResult ? (

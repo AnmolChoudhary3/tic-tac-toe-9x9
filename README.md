@@ -1,73 +1,60 @@
-# React + TypeScript + Vite
+# Ultimate Tic-Tac-Toe
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A two-player Ultimate Tic-Tac-Toe game built with React, TypeScript, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## How to Play
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The board consists of 9 smaller 3x3 tic-tac-toe boards arranged in a 3x3 grid.
 
-## React Compiler
+- Players (X and O) take turns placing marks on the smaller boards.
+- **Your cell position determines the next board:** placing a mark in cell N sends your opponent to board N.
+- **Free move:** if the target board is already won or drawn, the opponent can play in any open board.
+- **Win condition:** win 3 small boards in a row, column, or diagonal to win the game.
+- Active boards are highlighted with a yellow border so you always know where to play.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting Started
 
-## Expanding the ESLint configuration
+### Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node.js (v18+)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Install & Run
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Build for Production
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
+npm run preview
+```
+
+## Tech Stack
+
+- **React 19** with TypeScript
+- **Tailwind CSS v4** for styling
+- **Vite** for development and builds
+
+## Project Structure
+
+```
+src/
+├── App.tsx                          # Main layout
+├── components/
+│   ├── Board.tsx                    # 3x3 grid of small boards
+│   ├── SmallBoard.tsx               # Individual 3x3 board
+│   ├── Cell.tsx                     # Single cell button
+│   └── GameStatus.tsx               # Turn indicator and restart
+├── hooks/
+│   └── useUltimateTicTacToe.ts     # Game state and logic
+├── types/
+│   └── game.ts                      # Type definitions
+├── utils/
+│   └── cn.ts                        # Class name utility
+└── index.css                        # Tailwind config and theme
 ```
